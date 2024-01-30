@@ -105,8 +105,7 @@ TASK_LIST = (
     + TASK_LIST_STS
 )
 
-TASK_LIST = (["BiorxivClusteringS2S", "BiorxivClusteringP2P"])
-
+#TASK_LIST = (["BiorxivClusteringS2S", "BiorxivClusteringP2P"])
 
 model_name = os.getenv("MODEL")
 model = SentenceTransformer(model_name)
