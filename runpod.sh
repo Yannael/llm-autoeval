@@ -118,7 +118,7 @@ elif [ "$BENCHMARK" == "mteb" ]; then
     cd mteb
     pip install -e .
 
-    python ../llm-autoeval/mteb.py .
+    python ../llm-autoeval/mteb_eval.py .
 
 else
     echo "Error: Invalid BENCHMARK value. Please set BENCHMARK to 'nous', 'openllm' or 'mteb'."
