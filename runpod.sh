@@ -112,8 +112,14 @@ elif [ "$BENCHMARK" == "openllm" ]; then
         --output_path ./${benchmark}.json
 
     python ../llm-autoeval/main.py .
+
+elif [ "$BENCHMARK" == "mteb" ]; then
+    git clone https://github.com/embeddings-benchmark
+    cd embeddings-benchmark
+    pip install -e .
+    
 else
-    echo "Error: Invalid BENCHMARK value. Please set BENCHMARK to 'nous' or 'openllm'."
+    echo "Error: Invalid BENCHMARK value. Please set BENCHMARK to 'nous', 'openllm' or 'mteb'."
 fi
 
 if [ "$DEBUG" == "False" ]; then
