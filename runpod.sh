@@ -117,6 +117,7 @@ elif [ "$BENCHMARK" == "mteb" ]; then
     git clone https://github.com/embeddings-benchmark/mteb
     cd mteb
     pip install -e .
+    pip install -e .[beir]
 
     python ../llm-autoeval/mteb_eval.py .
 
