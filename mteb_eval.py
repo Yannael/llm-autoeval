@@ -2,6 +2,7 @@
 
 import logging
 import os
+import time
 
 
 from mteb import MTEB
@@ -48,7 +49,7 @@ TASK_LIST_PAIR_CLASSIFICATION = [
 
 TASK_LIST_RERANKING = [
     "AskUbuntuDupQuestions",
-    "MindSmallReranking",
+    #"MindSmallReranking",
     "SciDocsRR",
     "StackOverflowDupQuestions",
 ]
@@ -113,8 +114,15 @@ model = SentenceTransformer(model_name)
 for task in TASK_LIST:
     logger.info(f"Running task: {task}")
     eval_splits = ["dev"] if task == "MSMARCO" else ["test"]
+
+    start_time=time.time()
     evaluation = MTEB(tasks=[task], task_langs=["en"])  # Remove "en" for running all languages
     evaluation.run(model, output_folder=f"results/{model_name}", eval_splits=eval_splits)
+    duration=time.time()-start_time
+
+    with open("durations.txt", "a") as myfile:
+        myfile.write(task+" | "+str(duration) + "\n")
+
 
 
 
